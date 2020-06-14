@@ -1,18 +1,17 @@
 body{
-    background: whitesmoke;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background-image: url('../img/main.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 #app{
     display: grid;
     height: 100vh;
-    background: whitesmoke;
-    color: black;
+    /*background: whitesmoke;*/
     justify-content: center;
     grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    grid-template-columns: 30% 1fr 30%;
+    grid-template-columns: 25% 1fr 25%;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas:
             '. headline .'
@@ -22,9 +21,10 @@ body{
 }
 
 .holder{
+    font-family: -apple-system, "Lucida Grande", sans-serif;
     display: flex;
     flex-flow: column nowrap;
-
+    color: black;
 }
 
 .headline{
@@ -42,54 +42,77 @@ body{
 
 .feel{
     grid-area: feel;
-
 }
 
 .entry{
     grid-area: entry;
-    background: rgba(59, 74, 107, .4);
+    background-color: white;
+    border: black;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.title{
+    font-size: 20px;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
-    font-size: 27px;
+    font-size: 20px;
+    padding-bottom: 7px;
 }
 
 input{
-    height: 50%;
+    height: 30%;
     width: 100%;
-    background: whitesmoke;
     color: black;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: -apple-system, "Inconsolata", sans-serif;
     border: black;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 button{
     height: 50%;
     width: 80%;
-    background: whitesmoke;
     color: black;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-family: -apple-system, "Inconsolata", sans-serif;
     margin-top: 1rem;
     /*box-shadow: 2px 4px 5px #444;*/
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    border: 5px;
 }
+
+button:hover {background-color: lightskyblue}
+button:active {
+    background-color: cornflowerblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
 h1{
-    font-size: 36px;
+    font-size: 20px;
 }
 
 textarea{
     width: 100%;
     height: 50%;
-    background: whitesmoke;
     color: black;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: -apple-system, "Inconsolata", sans-serif;
+    border: 5px;
+    border-radius: 5px;
+    padding: 5px;
 }
+
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
@@ -100,18 +123,33 @@ button:focus {
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
     color: black;
-    font-family: 'Oswald', sans-serif;
 
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
     color: black;
-    font-family: 'Oswald', sans-serif;
 
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
     color: black;
-    font-family: 'Oswald', sans-serif;
 
-} 
+}
+
+@media(max-width: 750px) {
+    #app{
+        display: grid;
+        height: 100vh;
+        justify-content: center;
+        grid-gap: 1em;
+        font-size: 20px;
+        grid-template-columns: 2% 1fr 2%;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+                '. headline .'
+                '. zip .'
+                '. feel .'
+                '. entry .';
+    }
+
+}
