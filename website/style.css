@@ -93,6 +93,7 @@ button{
 }
 
 button:hover {background-color: lightskyblue}
+
 button:active {
     background-color: cornflowerblue;
     box-shadow: 0 5px #666;

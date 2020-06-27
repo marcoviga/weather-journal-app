@@ -1,5 +1,3 @@
-// Setup empty JS object to act as endpoint for all routes
-const projectData = {};
 
 // dependencies
 const cors = require('cors');
@@ -21,4 +19,26 @@ app.listen(port, () => {
     console.log(`express started on http://localhost:${port}`);
 });
 
+let weatherData = {};
 
+app.get('/weather', getWeatherData);
+
+function getWeatherData(req, res) {
+    res.send(weatherData);
+}
+
+app.post('/weather', addWeatherData);
+
+function addWeatherData(request, response) {
+    weatherData['date'] = request.body.date;
+    weatherData['temperature'] = request.body.temperature;
+    weatherData['content'] = request.body.content;
+
+    response.send(weatherData);
+}
+
+app.get('/bob', (req, res) => {
+    res.send('ok')
+});
+
+module.exports = app;
