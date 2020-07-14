@@ -4,10 +4,6 @@ const baseUri = 'http://api.openweathermap.org/data/2.5/weather?';
 const countryCode = 'us';
 const weatherAppUri = 'http://localhost:3000/weather';
 
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
-
 document.querySelector('#generate').addEventListener('click', runWeather);
 
 async function runWeather() {
@@ -19,36 +15,28 @@ async function runWeather() {
 
     fetch(apiUri)
         .then(response => response.json())
-        .then(weather => postWeather(weather, feelings, dateToday))
+        .then(weather => postWeather(weatherAppUri, JSON.stringify({
+            date: dateToday,
+            temp: weather.main.temp,
+            content: feelings
+        })))
         .then(() => addToUI())
         .catch(error => console.log(error))
 
 }
 
-// function handleErrors(response) {
-//     if (!response.ok) {
-//         throw Error(response.statusText);
-//     }
-//     return response;
-// }
-
-async function postWeather(weather, feelings, dateToday) {
+async function postWeather(weatherAppUri, payload) {
     fetch(weatherAppUri, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            date: dateToday,
-            temp: weather.main.temp,
-            content: feelings
-        })
+        body: payload
     }).then(function(res){
             return res;
     });
 }
-
 
 async function addToUI() {
     fetch(weatherAppUri)
