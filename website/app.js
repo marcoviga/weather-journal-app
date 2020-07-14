@@ -2,7 +2,7 @@
 const apiKey = "c69d778ca16a02677c0058af5c9e9a66";  //TODO for api key use config
 const baseUri = 'http://api.openweathermap.org/data/2.5/weather?';
 const countryCode = 'us';
-const weatherAppUri = 'http://localhost:3000/weatherz';
+const weatherAppUri = 'http://localhost:3000/weather';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
