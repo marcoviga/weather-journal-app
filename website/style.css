@@ -155,3 +155,23 @@ button:focus {
                 '. entry .';
     }
 }
+
+#date {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#temp {
+    text-align: center;
+    font-size: 30px;
+}
+
+#content {
+    text-align: center;
+    font-size: 30px;
+}
+
+.holder entry.title{
+    text-align: center;
+}

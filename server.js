@@ -3,6 +3,7 @@
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
+const { check, validationResult } = require('express-validator');
 
 // express app creation
 const port = process.env.PORT || 3000;
@@ -21,24 +22,27 @@ app.listen(port, () => {
 
 let weatherData = {};
 
-app.get('/weather', getWeatherData);
-
-function getWeatherData(req, res) {
+app.get('/weather', async (req, res) => {
     res.send(weatherData);
-}
+});
 
-app.post('/weather', addWeatherData);
+app.post('/weather', [
+        //TODO improve regex
+        check('date').matches('^\\d{1,2}\\.\\d{1,2}\\.\\d{4}$'),
+        check('temp').isNumeric(),
+        check('content').isString().isLength({max: 30})
+    ],
+    async (request, response) => {
+    const errors = validationResult(request);
+    if(!errors.isEmpty()){
+        return response.status(422).json({errors: errors.array()})
+    }
 
-function addWeatherData(request, response) {
     weatherData['date'] = request.body.date;
-    weatherData['temperature'] = request.body.temperature;
+    weatherData['temp'] = request.body.temp;
     weatherData['content'] = request.body.content;
 
-    response.send(weatherData);
-}
-
-app.get('/bob', (req, res) => {
-    res.send('ok')
+    response.status(201).send(weatherData);
 });
 
 module.exports = app;
