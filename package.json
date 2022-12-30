@@ -24,7 +24,7 @@
     "datejs": "^1.0.0-rc3",
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.4.0",
     "supertest": "^4.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
